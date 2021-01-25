@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="Astro.cs" />
     <Compile Include="Condition.cs" />
-    <Compile Include="Condition1.cs" />
     <Compile Include="Current.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="Forecastday.cs" />

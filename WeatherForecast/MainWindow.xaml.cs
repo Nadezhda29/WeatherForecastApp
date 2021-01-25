@@ -36,40 +36,27 @@ namespace WeatherForecast
 
             selectedCity.Text = weather.location.name;
             temperature.Text = weather.current.temp_c.ToString();
-            tempFeelLike.Text = weather.current.feelslike_c.ToString();
+            tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString();
             description.Text = weather.current.condition.text;
 
-            TextBlock textBlockTime = new TextBlock();
-            TextBlock textBlockIcon = new TextBlock();
-            TextBlock textBlockTemp = new TextBlock();
-
             string strTime = "";
-            string strIcon = "";
             string strTemp = "";
+            Image[] icons = new Image [24];
 
             for (int i = 0; i < 24; i++)
             {
                 strTime += weather.forecast.forecastday[0].hour[i].time.Substring(11) + "       ";
-                strIcon += weather.forecast.forecastday[0].hour[i].icon + "       ";
                 strTemp += weather.forecast.forecastday[0].hour[i].temp_c + "       ";
+                icons[i].Source = $@"C:\Users\Nadezhda\Desktop\C#\WeatherForecast\{weather.forecast.forecastday[0].hour[i].condition.icon.Substring(21)}";
             }
 
-            textBlockTime.Text = strTime;
-            textBlockIcon.Text = strIcon;
-            textBlockTemp.Text = strTemp;
+            foreach (Image icon in icons)
+            {
+                iconPanel.Children.Add(icon);
+            }
 
-            Grid.SetColumn(textBlockTime, 0);
-            Grid.SetRow(textBlockTime, 0);
-
-            Grid.SetColumn(textBlockIcon, 0);
-            Grid.SetRow(textBlockIcon, 1);
-
-            Grid.SetColumn(textBlockTemp, 0);
-            Grid.SetRow(textBlockTemp, 2);
-
-            temperatureGrid.Children.Add(textBlockTime);
-            temperatureGrid.Children.Add(textBlockTemp);
-            temperatureGrid.Children.Add(textBlockIcon);
+            timeText.Text = strTime;
+            temperatureText.Text = strTemp;
         }
     }
 }
