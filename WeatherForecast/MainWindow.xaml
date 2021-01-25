@@ -11,6 +11,7 @@
         <Button x:Name="choiceCity" Width="120" Height="40" Content="Выбрать город" HorizontalAlignment="Right" VerticalAlignment="Top" Background="WhiteSmoke"/>
         <TextBlock x:Name="selectedCity" Width="140" Height="40" VerticalAlignment="Top" Margin="40"/>
         <TextBlock x:Name="temperature" Width="80" Height="60" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tempFeelLike" Width="60" Height="30" VerticalAlignment="Top"/>
         <TextBlock x:Name="description" Width="100" Height="20" Margin="0 0 0 30" VerticalAlignment="Top"/>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <Grid x:Name="temperatureGrid">

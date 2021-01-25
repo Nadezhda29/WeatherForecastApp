@@ -16,12 +16,10 @@ namespace WeatherForecast
         public MainWindow()
         {
             InitializeComponent();
-
-            WebRequest request = WebRequest.Create("http://api.openweathermap.org/data/2.5/weather?q=Новосибирск&units=metric&lang=ru&appid=73b35156202c09452a570f755e69558d");
-            request.Method = "POST";
+            WebRequest request = WebRequest.Create("http://api.weatherapi.com/v1/forecast.json?key=48331233b3a143f094780957212401&q=Новосибирск&lang=ru");
             WebResponse response = request.GetResponse();
 
-            InfoWeather infoWeather;
+            Weather weather;
             string str = "";
 
             using (Stream stream = response.GetResponseStream())
@@ -33,12 +31,21 @@ namespace WeatherForecast
             }
             response.Close();
 
-            infoWeather = JsonSerializer.Deserialize<InfoWeather>(str);
+            weather = JsonSerializer.Deserialize<Weather>(str);
 
-            selectedCity.Text = infoWeather.name;
-            temperature.Text = infoWeather.main.temp.ToString();
-            description.Text = infoWeather.weather[0].main;
-            
+            selectedCity.Text = weather.location.name;
+            temperature.Text = weather.current.temp_c.ToString();
+            tempFeelLike.Text = weather.current.feelslike_c.ToString();
+            description.Text = weather.current.condition.text;
+
+            MessageBox.Show(weather.forecast.forecastday[0].hours[0].time);
+
+            //foreach (Hour element in weather.forecast)
+            //{
+            //    temperatureGrid.RowDefinitions[0].DataContext = element.time;
+            //    temperatureGrid.RowDefinitions[1].DataContext = element.icon;
+            //    temperatureGrid.RowDefinitions[2].DataContext = element.temp_c;
+            //}
         }
     }
 }
