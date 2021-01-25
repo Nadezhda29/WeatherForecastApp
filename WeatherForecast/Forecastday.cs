@@ -8,6 +8,6 @@ namespace WeatherForecast
         public Day day { get; set; }
         public Astro astro { get; set; }
 
-        public Hour[] hours { get; set; }
+        public Hour[] hour { get; set; }
     }
 }

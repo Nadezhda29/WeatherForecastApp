@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Text;
+using System.Windows.Controls;
 
 namespace WeatherForecast
 {
@@ -38,14 +39,37 @@ namespace WeatherForecast
             tempFeelLike.Text = weather.current.feelslike_c.ToString();
             description.Text = weather.current.condition.text;
 
-            MessageBox.Show(weather.forecast.forecastday[0].hours[0].time);
+            TextBlock textBlockTime = new TextBlock();
+            TextBlock textBlockIcon = new TextBlock();
+            TextBlock textBlockTemp = new TextBlock();
 
-            //foreach (Hour element in weather.forecast)
-            //{
-            //    temperatureGrid.RowDefinitions[0].DataContext = element.time;
-            //    temperatureGrid.RowDefinitions[1].DataContext = element.icon;
-            //    temperatureGrid.RowDefinitions[2].DataContext = element.temp_c;
-            //}
+            string strTime = "";
+            string strIcon = "";
+            string strTemp = "";
+
+            for (int i = 0; i < 24; i++)
+            {
+                strTime += weather.forecast.forecastday[0].hour[i].time.Substring(11) + "       ";
+                strIcon += weather.forecast.forecastday[0].hour[i].icon + "       ";
+                strTemp += weather.forecast.forecastday[0].hour[i].temp_c + "       ";
+            }
+
+            textBlockTime.Text = strTime;
+            textBlockIcon.Text = strIcon;
+            textBlockTemp.Text = strTemp;
+
+            Grid.SetColumn(textBlockTime, 0);
+            Grid.SetRow(textBlockTime, 0);
+
+            Grid.SetColumn(textBlockIcon, 0);
+            Grid.SetRow(textBlockIcon, 1);
+
+            Grid.SetColumn(textBlockTemp, 0);
+            Grid.SetRow(textBlockTemp, 2);
+
+            temperatureGrid.Children.Add(textBlockTime);
+            temperatureGrid.Children.Add(textBlockTemp);
+            temperatureGrid.Children.Add(textBlockIcon);
         }
     }
 }
