@@ -15,11 +15,10 @@
         <TextBlock x:Name="description" Width="100" Height="20" Margin="20 0 0 40" FontSize="15" HorizontalAlignment="Center"/>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <StackPanel>
-                <TextBlock x:Name="timeText"></TextBlock>
-                <StackPanel x:Name="iconPanel" Orientation="Horizontal">
-                    <Image></Image>
+                <TextBlock x:Name="timeText" Width="1460"></TextBlock>
+                <StackPanel x:Name="iconPanel" Width="1460" Orientation="Horizontal">
                 </StackPanel>
-                <TextBlock x:Name="temperatureText"></TextBlock>
+                <TextBlock x:Name="temperatureText" Width="1460"></TextBlock>
             </StackPanel>
         </ScrollViewer>
     </StackPanel>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Text;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace WeatherForecast
 {
@@ -39,15 +40,20 @@ namespace WeatherForecast
             tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString();
             description.Text = weather.current.condition.text;
 
-            string strTime = "";
-            string strTemp = "";
+            string strTime = "   ";
+            string strTemp = "   ";
             Image[] icons = new Image [24];
+
 
             for (int i = 0; i < 24; i++)
             {
-                strTime += weather.forecast.forecastday[0].hour[i].time.Substring(11) + "       ";
-                strTemp += weather.forecast.forecastday[0].hour[i].temp_c + "       ";
-                icons[i].Source = $@"C:\Users\Nadezhda\Desktop\C#\WeatherForecast\{weather.forecast.forecastday[0].hour[i].condition.icon.Substring(21)}";
+                strTime += weather.forecast.forecastday[0].hour[i].time.Substring(11) + "        ";
+                strTemp += weather.forecast.forecastday[0].hour[i].temp_c + "        ";
+
+                icons[i] = new Image();
+                icons[i].Height = 51;
+                icons[i].Width = 51;
+                icons[i].Source = new BitmapImage(new Uri($"http:{weather.forecast.forecastday[0].hour[i].condition.icon}"));
             }
 
             foreach (Image icon in icons)

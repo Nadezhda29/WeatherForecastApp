@@ -9,6 +9,6 @@ namespace WeatherForecast
 
         public string icon { get; set; }
 
-        public Bitmap bitmap { get { return new Bitmap(Image.FromFile($@"C:\Users\Nadezhda\Desktop\C#\WeatherForecast\{icon.Substring(21)}")); } }
+        //public Bitmap bitmap { get { return new Bitmap(Bitmap.FromResource($"{icon}")); } }
     }
 }
