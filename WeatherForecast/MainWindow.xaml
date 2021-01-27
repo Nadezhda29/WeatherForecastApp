@@ -8,22 +8,23 @@
         mc:Ignorable="d"
         Title="" Height="450" Width="800" Background="LightBlue">
     <StackPanel>
-        <TextBlock x:Name="choiceCity" TextAlignment="Center"  Width="120" Text="Выбрать город" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.504,1.8"/>
-        <ComboBox x:Name="cityList" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBox_Selected">
-            <ComboBoxItem>Новосибирск</ComboBoxItem>
-            <ComboBoxItem>Москва</ComboBoxItem>
-            <ComboBoxItem>Нью-Йорк</ComboBoxItem>
-            <ComboBoxItem>Лондон</ComboBoxItem>
-            <ComboBoxItem>Париж</ComboBoxItem>
-            <ComboBoxItem>Рим</ComboBoxItem>
-            <ComboBoxItem>Барселона</ComboBoxItem>
-            <ComboBoxItem>Казань</ComboBoxItem>
-        </ComboBox>
+        <HeaderedContentControl Header="Выбрать город" FontSize="15" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <ComboBox x:Name="cityList" StaysOpenOnEdit="True"  IsEditable="True" HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBox_Selected">
+                <ComboBoxItem>Новосибирск</ComboBoxItem>
+                <ComboBoxItem>Москва</ComboBoxItem>
+                <ComboBoxItem>Нью-Йорк</ComboBoxItem>
+                <ComboBoxItem>Лондон</ComboBoxItem>
+                <ComboBoxItem>Париж</ComboBoxItem>
+                <ComboBoxItem>Рим</ComboBoxItem>
+                <ComboBoxItem>Барселона</ComboBoxItem>
+                <ComboBoxItem>Казань</ComboBoxItem>
+            </ComboBox>
+        </HeaderedContentControl>
         <TextBlock x:Name="selectedCity"  TextAlignment="Center" Width="200" Height="40" Margin="0 0 0 20" FontSize="25" HorizontalAlignment="Center"/>
         <TextBlock x:Name="temperature" TextAlignment="Center" Width="200" Height="60" FontSize="40" Margin="0 0 20 0" HorizontalAlignment="Center"/>
         <TextBlock x:Name="tempFeelLike" TextAlignment="Center" Width="200" Height="30" FontSize="15" HorizontalAlignment="Center"/>
         <TextBlock x:Name="description" TextAlignment="Center" Width="200" Height="20" Margin="0 0 0 40" FontSize="15" HorizontalAlignment="Center"/>
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer x:Name="scroll" Visibility="Hidden" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <StackPanel>
                 <StackPanel x:Name="timeText" Orientation="Horizontal" Width="1248">
                 </StackPanel>

@@ -21,23 +21,21 @@ namespace WeatherForecast
             InitializeComponent();
         }
 
-        public string InsertSpace(string str, int n)
-        {
-            for (int i = 0; i < n - str.Length; i++)
-            {
-                str += " ";
-            }
-            return str;
-        }
-
         private void ComboBox_Selected(object sender, RoutedEventArgs e)
         {
+            ComboBox comboBox = (ComboBox)sender;
+            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+
+            if (selectedItem == null)
+            {
+                return;
+            }
+
             iconPanel.Children.Clear();
             timeText.Children.Clear();
             temperatureText.Children.Clear();
 
-            ComboBox comboBox = (ComboBox)sender;
-            ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+            scroll.Visibility = Visibility.Visible;
 
             WebRequest request = WebRequest.Create($"http://api.weatherapi.com/v1/forecast.json?key=48331233b3a143f094780957212401&q={selectedItem.Content}&lang=ru");
             WebResponse response = request.GetResponse();
@@ -58,8 +56,8 @@ namespace WeatherForecast
 
 
             selectedCity.Text = weather.location.name;
-            temperature.Text = weather.current.temp_c.ToString();
-            tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString();
+            temperature.Text = weather.current.temp_c.ToString() + "C°";
+            tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString() + "C°";
             description.Text = weather.current.condition.text;
 
             Image[] icons = new Image[24];
@@ -80,7 +78,7 @@ namespace WeatherForecast
                 textTemp[i].Width = 50;
                 textTemp[i].Background = new SolidColorBrush(Colors.LightBlue);
                 textTemp[i].BorderBrush = new SolidColorBrush(Colors.LightBlue);
-                textTemp[i].Text = weather.forecast.forecastday[0].hour[i].temp_c.ToString();
+                textTemp[i].Text = weather.forecast.forecastday[0].hour[i].temp_c.ToString() + "C°";
                 textTemp[i].HorizontalContentAlignment = HorizontalAlignment.Center;
 
                 icons[i] = new Image();
