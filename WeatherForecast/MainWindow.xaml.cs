@@ -56,8 +56,8 @@ namespace WeatherForecast
 
 
             selectedCity.Text = weather.location.name;
-            temperature.Text = weather.current.temp_c.ToString() + "C°";
-            tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString() + "C°";
+            temperature.Text = weather.current.temp_c.ToString() + "°C";
+            tempFeelLike.Text = "Ощущается " + weather.current.feelslike_c.ToString() + "°C";
             description.Text = weather.current.condition.text;
 
             Image[] icons = new Image[24];
@@ -78,7 +78,7 @@ namespace WeatherForecast
                 textTemp[i].Width = 50;
                 textTemp[i].Background = new SolidColorBrush(Colors.LightBlue);
                 textTemp[i].BorderBrush = new SolidColorBrush(Colors.LightBlue);
-                textTemp[i].Text = weather.forecast.forecastday[0].hour[i].temp_c.ToString() + "C°";
+                textTemp[i].Text = weather.forecast.forecastday[0].hour[i].temp_c.ToString() + "°C";
                 textTemp[i].HorizontalContentAlignment = HorizontalAlignment.Center;
 
                 icons[i] = new Image();
