@@ -1,4 +1,4 @@
-<h1 WeatherForecast**>
+## WeatherForecast
 ***
 Название программного продукта - WeatherForecast.
 Проект представляет из себя небольшое погодное приложение. Данные о погоде берутся с сайта https://www.weatherapi.com.
